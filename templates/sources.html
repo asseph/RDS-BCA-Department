@@ -1,0 +1,39 @@
+{% extends "base.html"%}
+{%block title%} Sources - BCA RDS College, Muzaffarpur  {%endblock title%}
+{%block scale%}0.8{%endblock scale%}
+{%block description%}Sources of contents of the app BCA RDS College Muzaffarpur{% endblock description%}
+{%block keywords%}Sources, Sources of contents, Sources of contents for the website, Sources of contents of the website of BCA RDS College, BCA Department RDS College Muzaffarpur, Sources page, RDS College Muzaffarpur {%endblock keywords%}
+{% block body%}
+
+<div class="main wrapper clearfix data">
+    <p class="text-center fs-2 text fw-bolder">SOURCES</p>
+    
+    {%if isSourcesAvailable%}
+        <div class="alert alert-info" role="alert" style="padding:0.3%">
+            Arranged in Alphabetical Order!
+        </div>
+
+        <div style="width:100%; margin:auto;padding:auto;">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Source</th>
+                        <th>Contribution</th>
+                        <th>Connect</th>
+                    </thead>
+                    {%for source in sources%}
+                        <tr>
+                            <td>{{source[1]}}</td>
+                            <td>{{source[2]}}</td>
+                            <td><a href= {%if sources[3] is not none%} "{{source[3]}}" target="_blank" {%else%} "javascript:void(0)" {%endif%}><i class="material-icons icons registrationIcons">open_in_new</i></a></td>
+                        </tr>
+                    {%endfor%}
+                </table>
+        </div>
+    {%else%}
+        <div class="alert alert-danger" role="alert" style="padding:0.3%">
+                {{errorMessage|default('No sources data Available!')}}
+        </div>
+    {%endif%}
+</div>
+
+{% endblock body%}

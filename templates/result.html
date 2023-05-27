@@ -1,0 +1,66 @@
+{% extends "base.html"%}
+{%block scale%}0.88{%endblock scale%}
+{%block title%} Results - BCA RDS College, Muzaffarpur {%endblock title%}
+{%block description%}BCA Result RDS College Muzaffarpur{% endblock description%}
+{%block keywords%}Result, BCA Result, BCA Result RDS College Muzaffarpur, BCA Department RDS College Muzaffarpur, BRABU BCA Result, BRABU, RDS College Muzaffarpur, Result of BCA Students of RDS College Muzaffarpur, Result Page, check your result, Semester wise result of BCA RDS College Muzaffarpur {%endblock keywords%}
+
+{%block css%}<link rel="stylesheet" href="../static/css/result.css">{%endblock css%}
+{% block body%}
+
+<div class="main wrapper clearfix data">
+  <h2 class="text-center fs-2 text fw-bolder">RESULTS</h2>
+  <hr>
+
+  <form>
+
+    <!-- session -->
+    <select class="form-select" aria-label="Default select example" name="session" required="true" style="margin-bottom: 0.8%;">
+      <option selected value="">Select Session</option>
+      <option value="2019-22">2019-22</option>
+      <option value="2020-23">2020-23</option>
+      <option value="2021-24">2021-24</option>
+      <option value="2022-25">2022-25</option>
+    </select>
+
+    <!-- semester -->
+    <select class="form-select" aria-label="Default select example" name="semester" required="true" style="margin-bottom: 0.8%;">
+      <option selected value="">Select Semester</option>
+      <option value="1">1st</option>
+      <option value="2">2nd</option>
+      <option value="3">3rd</option>
+      <option value="4">4th</option>
+      <option value="5">5th</option>
+      <option value="6">6th</option>
+    </select>
+
+    <!-- Input of any one of RegistrationNo, ExamRoll, ClassRoll -->
+    <select class="form-select" aria-label="Default select example" name="idName" required="true" onchange='fillInputPlaceholder(this)' style="margin-bottom: 0.8%;">
+      <option selected value="">Select ID</option>
+      <option value="registrationNo">Registration Number</option>
+      <option value="examRoll">Exam Roll Number</option>
+      <option value="classRoll">Class Roll Number</option>
+    </select>
+
+    <!-- Input of any one of RegistrationNo, ExamRoll, ClassRoll -->
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label" id="id-descriptor-label">Enter ID Value</label>
+      <input type="text" class="form-control" id="formGroupExampleInput"
+        placeholder="Registration Number / Exam Roll Number / Class Roll Number" name="idValue" required="true">
+    </div>
+
+    <!-- Submit Button -->
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+    </div>
+
+  </form>
+</div>
+
+<div id="result-container">
+</div>
+
+<button type="button" id="download-as-pdf-button" class="btn btn-primary center">Download</button>
+
+{% endblock body %}
+{%block script%} <script async src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> {%endblock script%}
+{%block script2%}<script src="../static/js/result.js"> </script>{%endblock script2%}

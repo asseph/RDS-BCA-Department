@@ -1,0 +1,144 @@
+{% extends "base.html"%}
+{%block scale%}0.75{%endblock scale%}
+{%block title%} Home - BCA RDS College, Muzaffarpur {%endblock title%}
+{%block css%}<link rel="stylesheet" href="../static/css/initial_overlay.css" />{%endblock css%}
+{%block css2%}<link rel="stylesheet" href="{{url_for('static', filename='/css/index.css')}}" />{%endblock css2%}
+
+{% block body%}
+{%block script%}<script src="../static/js/initial.overlay.js"> </script>{%endblock script%}
+
+<!---Page Heading-->
+<div class="main wrapper clearfix data" style="padding-top:0%;margin-top:0%;color:bold black;">
+  <p class="text-center fs-2 text fw-bolder">WELCOME TO BCA DEPARTMENT OF RDS COLLEGE MUZAFFARPUR</p>
+  {# <img src="" class="img-thumbnail" alt="Image Not Found"> #}
+
+
+  <!--overlay starts-->
+    <div id="overlay">
+      <style onload="overlay()"></style> <!--There is no use of style here but I have used it for calling overlay because 'onload' doesn't support by div tag-->
+        <div id="overlayText">
+            <strong>
+                <span id="overlayHeading">Website Is Under Development</span>
+                <span>
+                    <br>Signed-off-by: Suraj Giri
+                    <br>Contact: <a href="mailto:surajgirioffl@gmail.com">surajgirioffl@gmail.com</a>
+                </span>
+            </strong>
+            <br><br>
+            <button type="button" class="btn btn-primary" onclick="closeOverlay()">Close</button>
+            <p id="autoClose"></p>
+        </div>
+    </div>
+
+  <!--overlay ends-->
+
+
+  <!--Image Slides on the page-->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{url_for('static', filename='images/college.png')}}" class="d-block w-100" alt="..." onload="setTimeout(()=>{this.parentElement.parentElement.nextElementSibling.nextElementSibling.click()},5000)" id="suraj">
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/class.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/playground.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Notification Starts-->
+  {%if isNoticeAvailable%}
+      <div class="border-animation" id='notice'>
+          <h4 style="text-decoration: underline;"><strong>NOTICE BOARD</strong><h4>
+          <marquee onmouseover="this.stop()" onmouseout="this.start()"><p><img src="../static/gif/new.gif"><a href={%if notice[2] is not none%} "{{notice[2]}}" target="_blank" {%else%} "javascript:void(0)" {%endif%}>{{notice[1]}}</a></p></marquee>
+          
+          <div class="alert alert-info" role="alert" id="noticeAlert">
+              {{notice[3]}}
+          </div>
+          <div class="alert alert-primary" role="alert" style="margin-top:-0.8%; padding-bottom: 0%;">
+          <p>
+            <a href={%if notice[5] is not none%} "{{notice[5]}}" target="_blank" {%else%} "javascript:void(0)"{%endif%}> {{notice[4]}}</a> 
+              <img src="../static/gif/new2.gif" width="5%">
+          </p>
+          </div>
+          {%if notice[6] is not none%}
+              <a href="{{notice[7]}}" target="_blank"><button type="button" class="btn btn-info">{{notice[6]}}</button></a>
+          {%endif%}
+          <!--<p style="margin: 1%;">Last Date: <span class="blink">15th Nov 2022<span></p>-->
+          <p style="margin: 1%;">{{notice[8]}}: <span class="blink">{{notice[9]}}<span></p>
+              <span style="font-weight: 300; font-size: 70%; font-family: serif"><img src="../static/img/update.png" width="2.5%"><i> Last Updated On {{notice[13]}}</i></span>
+      </div>
+  {%else%}
+      <div class="alert alert-danger" role="alert" style="width:80%; margin:auto;padding:auto; margin-bottom:2%; padding:0.5%; text-align:center; margin-top: 2%;">
+          {{errorMessage|default("Notice Unavailable!")}}
+      </div>
+  {%endif%}
+  <!--Notification Ends-->
+
+    <!--About Starts-->
+    <div class="row about-wrapper">
+    <!--About RDS College-->
+      <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title"><span class="top-border">Overview </span></h5>
+                  <div class="left-border card-text-container">
+                      <p class="card-text">
+                        Ram Dayalu Singh College, Muzaffarpur is a co-educational Constituent Unit of B. R. A. Bihar University, Muzaffarpur, imparting Under-Graduate and Post-Graduate teaching in the Faculty of Arts, Science and Commerce. It is approved by the University Grants Commission, New Delhi under section 2(f) of the U. G. C. Act, 1956. Ramdayalu Singh College (RDS College, Muzaffarpur) has become first NAAC Accredited College of B. R. A. Bihar University & in North Bihar for cycle 5 January 2013 to 4 January 2018.
+                      </p>
+                      <a href="{{url_for('aboutRdsCollege')}}" class="btn btn-primary">Read more.. <i class="material-icons icons d-inline-block align-text-top">chevron_right</i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <!--About BCA-->
+      <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title"><span class="top-border">BCA</span></h5>
+                  <div class="left-border card-text-container">
+                      <p class="card-text">
+                        BCA Department is an element of Vocational Department of Ram Dayalu Singh College, Muzaffarpur (RDS College, Muzaffarpur). It offers a comprehensive curriculum that provides students with a strong foundation in computer science and application. Our program combines theoretical knowledge with hands-on experience, giving students the skills they need to succeed in today's competitive job market. The BCA course is started around 2009. The department is offering BCA course with an intake of 50 students.
+                      </p>
+                      <a href="{{url_for('about')}}" class="btn btn-primary">Read more.. <i class="material-icons icons d-inline-block align-text-top">chevron_right</i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!--About Ends-->
+
+
+
+    <!--Other Info Starts-->
+    <div id="website-info">
+      <div class="alert alert-danger" role="alert">
+        <i>
+          This is not the official website of the BCA Department. This website has been developed by <a href="http://github.com/surajgirioffl">Suraj Giri</a> and, designed, maintained, and updated by students of the BCA Department.
+        </i>
+      </div>
+    <!--Other Info ends-->
+
+  </div>
+  {% endblock body %}
